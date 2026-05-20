@@ -1,0 +1,98 @@
+Assuming unrestricted shared filesystem usage.
+host: DESKTOP-7E6BEMV
+Building DAG of jobs...
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+run_treated            3
+run_untreated          1
+plot_comparison        1
+plot_growth            1
+all                    1
+total                  7
+
+Select jobs to execute...
+Execute 1 jobs...
+[Wed May 20 14:19:58 2026]
+localrule run_treated:
+    output: results/growth_treated_20.npy
+    jobid: 4
+    reason: Missing output files: results/growth_treated_20.npy
+    wildcards: start=20
+    resources: tmpdir=C:\Users\Laura\AppData\Local\Temp
+Select jobs to execute...
+[Wed May 20 14:20:00 2026]
+Finished jobid: 4 (Rule: run_treated)
+1 of 7 steps (14%) done
+Execute 1 jobs...
+[Wed May 20 14:20:00 2026]
+localrule run_treated:
+    output: results/growth_treated_60.npy
+    jobid: 6
+    reason: Missing output files: results/growth_treated_60.npy
+    wildcards: start=60
+    resources: tmpdir=C:\Users\Laura\AppData\Local\Temp
+Select jobs to execute...
+[Wed May 20 14:20:01 2026]
+Finished jobid: 6 (Rule: run_treated)
+2 of 7 steps (29%) done
+Execute 1 jobs...
+[Wed May 20 14:20:02 2026]
+localrule run_treated:
+    output: results/growth_treated_40.npy
+    jobid: 5
+    reason: Missing output files: results/growth_treated_40.npy
+    wildcards: start=40
+    resources: tmpdir=C:\Users\Laura\AppData\Local\Temp
+Select jobs to execute...
+[Wed May 20 14:20:03 2026]
+Finished jobid: 5 (Rule: run_treated)
+3 of 7 steps (43%) done
+Execute 1 jobs...
+[Wed May 20 14:20:03 2026]
+localrule run_untreated:
+    output: results/growth_untreated.npy
+    jobid: 2
+    reason: Missing output files: results/growth_untreated.npy
+    resources: tmpdir=C:\Users\Laura\AppData\Local\Temp
+[Wed May 20 14:20:05 2026]
+Finished jobid: 2 (Rule: run_untreated)
+4 of 7 steps (57%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed May 20 14:20:05 2026]
+localrule plot_comparison:
+    input: results/growth_untreated.npy, results/growth_treated_20.npy, results/growth_treated_40.npy, results/growth_treated_60.npy
+    output: results/figures/treatment_comparison.png, results/figures/treated_vs_untreated.png, results/figures/spatial_snapshots.png
+    jobid: 3
+    reason: Missing output files: results/figures/treatment_comparison.png, results/figures/spatial_snapshots.png, results/figures/treated_vs_untreated.png; Input files updated by another job: results/growth_treated_40.npy, results/growth_treated_20.npy, results/growth_treated_60.npy, results/growth_untreated.npy
+    resources: tmpdir=C:\Users\Laura\AppData\Local\Temp
+Select jobs to execute...
+[Wed May 20 14:20:11 2026]
+Finished jobid: 3 (Rule: plot_comparison)
+5 of 7 steps (71%) done
+Execute 1 jobs...
+[Wed May 20 14:20:11 2026]
+localrule plot_growth:
+    input: results/growth_untreated.npy
+    output: results/figures/growth_curve_untreated.png
+    jobid: 1
+    reason: Missing output files: results/figures/growth_curve_untreated.png; Input files updated by another job: results/growth_untreated.npy
+    resources: tmpdir=C:\Users\Laura\AppData\Local\Temp
+[Wed May 20 14:20:12 2026]
+Finished jobid: 1 (Rule: plot_growth)
+6 of 7 steps (86%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed May 20 14:20:12 2026]
+localrule all:
+    input: results/figures/growth_curve_untreated.png, results/figures/spatial_snapshots.png, results/figures/treatment_comparison.png, results/figures/treated_vs_untreated.png
+    jobid: 0
+    reason: Input files updated by another job: results/figures/growth_curve_untreated.png, results/figures/treatment_comparison.png, results/figures/spatial_snapshots.png, results/figures/treated_vs_untreated.png
+    resources: tmpdir=C:\Users\Laura\AppData\Local\Temp
+[Wed May 20 14:20:12 2026]
+Finished jobid: 0 (Rule: all)
+7 of 7 steps (100%) done
+Complete log(s): C:\Users\Laura\Desktop\glioma-ca-model\.snakemake\log\2026-05-20T141956.315817.snakemake.log
